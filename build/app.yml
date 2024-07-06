@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lamp-app-service
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: lamp-app
+  type: LoadBalancer
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lamp-app-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lamp-app
+  template:
+    metadata:
+      labels:
+        app: lamp-app
+    spec:
+      containers:
+        - name: lamp-app
+          image: shihab24/lamp:latest
+          volumeMounts:
+            - name: storage
+              mountPath: /var/www/html/uploads
+          ports:
+            - containerPort: 80
+      volumes:
+       - name: storage
+         persistentVolumeClaim:
+           claimName: lamp-pvc
