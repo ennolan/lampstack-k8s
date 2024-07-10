@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  lamp-simpale:
+    build:
+     context: .
+    image: lamp_simpale
+    ports:
+      - "81:80"
+    networks:
+      - app-network
+    volumes:
+      - ./:/var/www/html
+
+networks:
+  app-network:
+    driver: bridge
+    external: true
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
