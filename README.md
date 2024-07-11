@@ -151,11 +151,11 @@ spec:
 ☑️ Then run application using `` kubectl apply  kubernetes/app.yml `` command.
 
 ## ✅ Step 6: Update application
-☑️ Authenticate you docker hub or docker registry .
+☑️ Authenticate to access your docker hub or docker registry .
 
 ☑️ Build and push your Docker image to your docker hub or registry.
 
-☑️ Update build image tag this in deployment kubernetes yaml.
+☑️ Update build image tag in deployment kubernetes yaml.
 
 ☑️ Then run application using `` kubectl apply  kubernetes/app.yml `` command.
 
